@@ -33,17 +33,17 @@ export default function About() {
             <span className="flex flex-col mx-auto ">
               <motion.p
                 variants={subtitleVariant}
-                className="text-sm font-semibold uppercase tracking-wider text-yellow-600"
+                className="text-sm font-semibold uppercase tracking-wider text-gold"
               >
                 Canada-Wide One-Stop Turnkey Solution
               </motion.p>
               <motion.h2
                 variants={titleVariant}
-                className="mt-2 md:mb-4 text-3xl sm:text-4xl font-bold text-white sm:max-w-lg max-w-xl"
+                className="mt-2 md:mb-4 text-3xl sm:text-4xl font-chivo font-bold text-light sm:max-w-lg max-w-xl"
               >
                 TKB Group - Custom Millwork Experts
               </motion.h2>
-              <p className="mt-4 text-[8px] sm:text-sm md:text-md text-white max-w-2xl justify-self-start md:px-10 text-left">
+              <p className="mt-4 text-[8px] sm:text-sm md:text-md text-light max-w-2xl justify-self-start md:px-10 text-left">
                 We offer outstanding custom commercial millwork solutions of any
                 scale. We have over 25 years of experience and knowledge in
                 building supreme quality retail displays and furniture for

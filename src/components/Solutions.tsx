@@ -2,82 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-
-// const services = [
-//   {
-//     icon: "/icons/planning.png",
-//     subheading: "MILLWORK PROJECTS MANAGEMENT",
-//     heading: "Project Planning",
-//     description:
-//       "Professional project planning and management for any complexity of millwork and woodworking projects.",
-//   },
-//   {
-//     icon: "/icons/contracting.png",
-//     subheading: "TOP MILLWORK SPECIALISTS",
-//     heading: "Millwork Contracting",
-//     description:
-//       "With a strong dedication to sustainability and a loyal base of returning clients, we take pride in the trust we have earned over the years.",
-//   },
-//   {
-//     icon: "/icons/bidding.png",
-//     subheading: "FREE ESTIMATE",
-//     heading: "Transparent Bidding",
-//     description:
-//       "Get a free, detailed estimate for your millwork project, ensuring transparency and quality with our competitive pricing.",
-//   },
-//   {
-//     icon: "/icons/services.png",
-//     subheading: "FULL SPECTRUM SERVICES",
-//     heading: "Complete Services",
-//     description:
-//       "For your architectural millwork, custom cabinets, kitchens, or built-ins needs, rest assured, we’ve got you covered with everything necessary to deliver exceptional results.",
-//   },
-//   {
-//     icon: "/icons/fabrication.png",
-//     subheading: "OWN FABRICATION FACILITY",
-//     heading: "In-house Fabrication",
-//     description:
-//       "We employ state-of-the-art equipment, cutting-edge software, and top professionals to guarantee the quality of our solutions.",
-//   },
-// ];
-
-const services = [
-  {
-    icon: "/icons/planning.png",
-    subheading: "MILLWORK PROJECTS MANAGEMENT",
-    heading: "Project Delivery",
-    description:
-      "Comprehensive project planning and management for every complexity of millwork and cabinetry projects.",
-  },
-  {
-    icon: "/icons/contracting.png",
-    subheading: "TRUSTED MILLWORK EXPERTS",
-    heading: "Millwork Contractors",
-    description:
-      "Certified, insured millwork specialists committed to sustainability, precise coordination, and premium finishes for residential and commercial spaces across Canada.",
-  },
-  {
-    icon: "/icons/bidding.png",
-    subheading: "NO-COST QUOTE",
-    heading: "Clear, Fair Pricing",
-    description:
-      "Request a fast, line‑item estimate with clear lead times, value‑engineering options, and transparent pricing before fabrication begins.",
-  },
-  {
-    icon: "/icons/services.png",
-    subheading: "DESIGN TO INSTALLATION",
-    heading: "Turnkey Solutions",
-    description:
-      "One partner for design, engineering, architectural millwork, custom cabinets, luxury kitchens, built‑ins, delivery, and installs—seamless coordination that reduces change orders and downtime.",
-  },
-  {
-    icon: "/icons/fabrication.png",
-    subheading: "OWN FABRICATION WORKSHOP",
-    heading: "In-House Fabricators",
-    description:
-      "CNC machining, edge‑banding, and CAD/CAM workflows ensure tight tolerances, faster lead times, and rigorous QA with premium materials prior to site installation.",
-  },
-];
+import { services } from "@/components/lib/services";
 
 export default function Solutions() {
   // Animation variant for the main title text (lifts up)
@@ -123,13 +48,13 @@ export default function Solutions() {
           >
             <motion.p
               variants={titleVariant}
-              className="text-sm font-semibold uppercase tracking-wider text-yellow-600"
+              className="text-sm font-semibold uppercase tracking-wider text-gold"
             >
               Proudly Canadian-owned and operated
             </motion.p>
             <motion.h2
               variants={titleVariant}
-              className="mt-2 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900"
+              className="mt-2 text-4xl sm:text-5xl font-chivo font-bold tracking-tight text-gray-900"
             >
               A-to-Z Millwork Solutions
             </motion.h2>
@@ -143,13 +68,13 @@ export default function Solutions() {
               <div className="flex h-18 w-18 items-center justify-center rounded-full bg-gray-100 shadow-inner">
                 <Image src={service.icon} alt="" width={44} height={44} />
               </div>
-              <h3 className="mt-6 text-xs font-semibold uppercase tracking-wider text-yellow-600">
+              <h3 className="mt-6 text-xs font-semibold uppercase tracking-wider text-gold">
                 {service.subheading}
               </h3>
-              <p className="mt-1 text-xl font-bold text-gray-900">
+              <p className="mt-1 text-xl font-bold text-darkgray">
                 {service.heading}
               </p>
-              <p className="mt-4 text-base text-gray-600">
+              <p className="mt-4 text-base text-darkgrey">
                 {service.description}
               </p>
             </motion.div>

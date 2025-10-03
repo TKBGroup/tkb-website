@@ -8,7 +8,6 @@ import {
   aboutLinks,
   ContactUs,
 } from "./lib/navLinks";
-import { tr } from "framer-motion/client";
 
 const navVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
@@ -56,8 +55,7 @@ const LinkColumn = ({
     <ul className="flex flex-col space-y-3">
       {links.map((link) => (
         <motion.li key={link.href} variants={linkVariants}>
-          {/* <h3>{link.name}</h3> */}
-          <Link href={link.href} className="text-gray-700 hover:text-gray-900">
+          <Link href={link.href} className="text-darkgrey hover:text-darkblue">
             {link.name}
           </Link>
         </motion.li>
@@ -69,7 +67,7 @@ const LinkColumn = ({
 export default function FullNav() {
   return (
     <motion.nav
-      className="absolute top-16 left-0 w-full z-50 bg-white h-100"
+      className="absolute top-16 left-0 w-full z-50 bg-light h-100"
       variants={navVariants}
       initial="hidden"
       animate="visible"

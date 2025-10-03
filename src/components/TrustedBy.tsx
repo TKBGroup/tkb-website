@@ -1,33 +1,15 @@
-// components/Clients.tsx
 "use client";
 
 import { useRef } from "react";
 import { motion, useInView, Variants } from "framer-motion";
 import Image from "next/image";
-
-// An array for the logos, similar to our last component
-const clientLogos = [
-  { name: "LG", src: "/logos/lg.png" },
-  { name: "BOSCH", src: "/logos/bosch.png" },
-  { name: "Thermador", src: "/logos/thermador.png" },
-  { name: "Gaggenau", src: "/logos/gaggenau.png" },
-  { name: "Gennair", src: "/logos/jennair.png" },
-  { name: "KitchenAid", src: "/logos/kitchenaid.png" },
-  // { name: 'SKS', src: '/logos/sks.png' },
-  // { name: 'LaCornue', src: '/logos/lacornue.png' },
-  // { name: 'Monogram', src: '/logos/monogram.png' },
-];
+import { logos } from "@/components/lib/logos";
 
 export default function TrustedBy() {
-  // 1. Create a ref to attach to our section element
   const ref = useRef(null);
 
-  // 2. The useInView hook tracks if the ref is in the viewport.
-  // `once: true` means the animation will only fire once.
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  // 3. Define animation "variants" for our text elements.
-  // We can define 'hidden' and 'visible' states.
   const textVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -57,41 +39,39 @@ export default function TrustedBy() {
   };
 
   return (
-    // Attach the ref to the parent section
     <section ref={ref} className="bg-white py-20 sm:py-32">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        {/* Animated Title Container */}
         <motion.div
           className="relative mb-10 sm:mb-24"
-          // We use `animate` to conditionally apply the 'visible' or 'hidden' state
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* "TRUSTED BY" - Zooms out */}
           <motion.h2
             variants={trustedByVariant}
             className="text-3xl sm:text-8xl font-black uppercase"
-            style={{ color: "transparent", WebkitTextStroke: "1px #d2a53cb4" }} // Outline effect
+            style={{
+              color: "transparent",
+              WebkitTextStroke: "1px  var(--color-gold)",
+              fontFamily: "poppins",
+            }}
           >
             Trusted By
           </motion.h2>
 
-          {/* "OVER 1000+ CLIENTS" - Slides in from the right */}
           <motion.h3
             variants={PopularBrands}
-            className="absolute inset-0 flex items-center justify-center text-xl sm:text-5xl font-bold text-gray-900 mt-8 sm:mt-12 ml-6 sm:ml-12"
+            className="absolute inset-0 flex items-center justify-center text-xl sm:text-5xl font-chivo font-bold text-gray-900 mt-8 sm:mt-12 ml-6 sm:ml-12"
           >
             POPULAR BRANDS
           </motion.h3>
         </motion.div>
 
-        {/* Animated Logo Grid */}
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 items-center gap-x-8 gap-y-10"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          transition={{ staggerChildren: 0.1, delayChildren: 0.5 }} // Stagger and delay the children
+          transition={{ staggerChildren: 0.1, delayChildren: 0.5 }}
         >
-          {clientLogos.map((logo) => (
+          {logos.map((logo: { name: string; src: string }) => (
             <motion.div
               key={logo.name}
               variants={logoVariants}

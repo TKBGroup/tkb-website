@@ -58,8 +58,9 @@ export default function Numbers() {
                   className="text-6xl sm:text-8xl font-black uppercase"
                   style={{
                     color: "transparent",
-                    WebkitTextStroke: "1px #d2a53cb4",
-                  }} // Outline effect
+                    WebkitTextStroke: "1px var(--color-gold)",
+                    fontFamily: "poppins",
+                  }}
                 >
                   25+
                 </motion.h2>
@@ -68,7 +69,7 @@ export default function Numbers() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
-                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl font-bold text-gray-900 mt-12 ml-12"
+                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl font-chivo font-bold text-gray-900 mt-12 ml-12"
                 >
                   Years
                 </motion.h3>
@@ -84,8 +85,9 @@ export default function Numbers() {
                   className="text-6xl sm:text-8xl font-black uppercase"
                   style={{
                     color: "transparent",
-                    WebkitTextStroke: "1px #d2a53cb4",
-                  }} // Outline effect
+                    WebkitTextStroke: "1px  var(--color-gold)",
+                    fontFamily: "poppins",
+                  }}
                 >
                   1000+
                 </motion.h2>
@@ -94,7 +96,7 @@ export default function Numbers() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
-                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl font-bold text-gray-900 mt-12 ml-12"
+                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl font-chivo font-bold text-gray-900 mt-12 ml-12"
                 >
                   Projects
                 </motion.h3>
@@ -110,8 +112,9 @@ export default function Numbers() {
                   className="text-6xl sm:text-8xl font-black uppercase"
                   style={{
                     color: "transparent",
-                    WebkitTextStroke: "1px #d2a53cb4",
-                  }} // Outline effect
+                    WebkitTextStroke: "1px var(--color-gold)",
+                    fontFamily: "poppins",
+                  }}
                 >
                   24/7
                 </motion.h2>
@@ -120,7 +123,7 @@ export default function Numbers() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
-                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl font-bold text-gray-900 mt-12 ml-12"
+                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl font-chivo font-bold text-gray-900 mt-12 ml-12"
                 >
                   {" "}
                   Support
@@ -137,8 +140,9 @@ export default function Numbers() {
                   className="text-6xl sm:text-8xl font-black uppercase"
                   style={{
                     color: "transparent",
-                    WebkitTextStroke: "1px #d2a53cb4",
-                  }} // Outline effect
+                    WebkitTextStroke: "1px var(--color-gold)",
+                    fontFamily: "poppins",
+                  }}
                 >
                   99%
                 </motion.h2>
@@ -147,7 +151,7 @@ export default function Numbers() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
-                  className="absolute w-full inset-0 flex items-center justify-center text-3xl sm:text-5xl font-bold text-gray-900 mt-12 ml-12"
+                  className="absolute w-full inset-0 flex items-center justify-center text-3xl sm:text-5xl font-chivo font-bold text-gray-900 mt-12 ml-12"
                 >
                   On-time
                 </motion.h3>

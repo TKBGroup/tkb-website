@@ -132,39 +132,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-
-const cardsData = [
-  {
-    title: "Custom Cabinetry",
-    desc: "Solid-wood and engineered custom cabinets for kitchens, bathrooms, and built-ins, tailored to your space and lifestyle.",
-    img: "images/hero-1.jpg",
-    imgAlt: "Luxury custom kitchen cabinetry by TKB Group",
-  },
-  {
-    title: "Architectural Millwork",
-    desc: "Durable and beautiful reception desks, retail fixtures, and wall panels that embody your brand’s standards.",
-    img: "images/millwork.jpg",
-    imgAlt: "Bespoke commercial architectural millwork",
-  },
-  {
-    title: "Exhibition & Displays",
-    desc: "Modular and custom booths, demo stations, and showroom environments for trade fairs across Canada.",
-    img: "images/exhibit.jpg",
-    imgAlt: "Custom trade show exhibition booth",
-  },
-  {
-    title: "Innovative Design",
-    desc: "Concept-to-detail support, from shop drawings to material selection, balancing look, function, and budget.",
-    img: "images/design.png",
-    imgAlt: "Designer reviewing architectural shop drawings",
-  },
-  {
-    title: "National Installs",
-    desc: "Skilled install teams for residential and commercial projects, handling logistics and coordination nationwide.",
-    img: "images/install.jpg",
-    imgAlt: "Professional team installing commercial retail fixtures",
-  },
-];
+import { cardsData } from "@/components/lib/SolutionCards";
 
 const cardVariants: Variants = {
   hidden: { scale: 0.3, y: 30 },
@@ -187,7 +155,7 @@ const SolutionCard = ({ card, index, progress, range, targetScale }) => {
       className="sticky top-0 w-full min-w-[265px] sm:min-w-[400px] h-[400px] mx-auto shadow-2xl flex items-center justify-center"
       variants={cardVariants}
     >
-      <h3 className="text-2xl sm:text-3xl font-bold text-white text-center px-4">
+      <h3 className="text-3xl sm:text-4xl font-chivo font-bold text-light text-center px-4">
         {card.title}
       </h3>
     </motion.div>
@@ -202,12 +170,12 @@ export default function OurSolutions() {
   });
 
   return (
-    <section className="p-5 sm:p-8 md:p-16 lg:p-24 max-w-full mx-auto bg-gray-300/60">
+    <section className="p-5 sm:p-8 md:p-16 lg:p-24 max-w-full mx-auto bg-gray-50">
       <div className="max-w-full mx-auto text-center mb-15 sticky mt-4">
-        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
+        <h2 className="text-3xl sm:text-5xl font-chivo font-bold tracking-tight">
           Our Solutions
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-gray-600">
+        <p className="mt-4 text-base sm:text-lg text-darkgrey">
           Scroll to explore our integrated services
         </p>
       </div>
@@ -216,13 +184,13 @@ export default function OurSolutions() {
       <div className="max-w-[1420px] mx-auto grid grid-cols-3 md:grid-cols-12">
         {/* Left static text */}
         <div className=" md:col-span-5 col-span-3 md:sticky top-32 self-start mx-auto">
-          <h3 className="text-2xl font-bold mb-4">Why TKB Group?</h3>
-          <p className="text-sm sm:text-lg text-gray-700 sm:max-w-full w-full mb-4">
+          <h3 className="text-2xl font-bold mb-4 font-chivo">Why TKB Group?</h3>
+          <p className="text-sm sm:text-lg text-darkgrey sm:max-w-full w-full mb-4">
             We provide integrated solutions across cabinetry, millwork, design,
             exhibitions, and installations. Scroll to see our expertise in
             action.
           </p>
-          <p className="text-sm sm:text-lg  sm:max-w-max text-gray-700">
+          <p className="text-sm sm:text-lg  sm:max-w-max text-darkgrey">
             Our team ensures seamless execution from concept to delivery,
             maintaining quality and consistency for every project. We provide
             integrated solutions across cabinetry, millwork, design,
@@ -230,7 +198,7 @@ export default function OurSolutions() {
             action. Our team ensures seamless execution from concept to
             delivery, maintaining quality and consistency for every project.
           </p>
-          <p className="text-sm sm:text-lg  sm:max-w-max text-gray-700 mb-4">
+          <p className="text-sm sm:text-lg  sm:max-w-max text-darkgrey mb-4">
             We provide integrated solutions across cabinetry, millwork, design,
             exhibitions, and installations. Scroll to see our expertise in
             action.

@@ -7,6 +7,7 @@ import Numbers from "@/components/Numbers";
 import Stats from "@/components/Stats";
 import About from "@/components/About";
 import OurSolutions from "@/components/OurSolutions";
+import Testimonials from "@/components/Testimonials";
 
 export default function HomePage() {
   return (
@@ -44,7 +45,7 @@ export default function HomePage() {
       </FadeInOnScroll>
 
       <FadeInOnScroll>
-        <></>
+        <Testimonials />
       </FadeInOnScroll>
     </main>
   );

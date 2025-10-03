@@ -1,0 +1,25 @@
+/* styles for Embla Carousel */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 33.33%; /* Shows 3 slides at once */
+  min-width: 0;
+  position: relative;
+  padding-left: 1.5rem; /* Creates a gap between slides */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .embla__slide {
+    flex-basis: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .embla__slide {
+    flex-basis: 100%;
+  }
+}

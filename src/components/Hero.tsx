@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { images } from "@/components/lib/heroImages";
 
 const MagneticButton = ({ children, className, ...props }: any) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -33,13 +34,6 @@ const MagneticButton = ({ children, className, ...props }: any) => {
     </motion.button>
   );
 };
-
-const images = [
-  "/images/hero-1.jpg",
-  "/images/hero-2.jpg",
-  "/images/hero-3.jpg",
-  "/images/hero-4.jpg",
-];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -86,7 +80,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen p-8 xs:p-10 sm:p-18 md:p-22 lg:py-36 lg:px-20 w-full overflow-hidden text-white">
+    <section className="relative h-screen p-8 xs:p-10 sm:p-18 md:p-22 lg:py-36 lg:px-20 w-full overflow-hidden text-light">
       <AnimatePresence>
         <motion.div
           key={index}
@@ -107,13 +101,13 @@ export default function Hero() {
       <div className="relative z-10 flex h-full flex-col justify-center container mx-auto px-6">
         <div className="w-full max-w-full md:max-w-3xl">
           <p className="flex items-center gap-4 text-sm font-light uppercase tracking-widest">
-            <span className="h-px w-8 bg-white" />
+            <span className="h-px w-8 bg-light" />
             Residential & Commercial Millwork
           </p>
-          <h1 className="mt-4 text-2xl xs:text-4xl md:text-7xl font-semibold leading-tight">
+          <h1 className="mt-4 text-2xl xs:text-4xl md:text-7xl font-chivo font-semibold leading-tight">
             Elevate Your Space with TKB Group{" "}
           </h1>
-          <p className="mt-6 text-lg text-gray-300">
+          <p className="mt-6 text-lg text-lightgrey">
             Decades of delivering custom cabinetry across Canada. Your
             all-in-one partner for precision-engineered kitchens, commercial
             fixtures, and bespoke millwork solutions.
@@ -124,8 +118,8 @@ export default function Hero() {
           <button
             onMouseMove={(e) => handleMouseMove(e, setContactPos)}
             onMouseLeave={() => handleMouseLeave(setContactPos)}
-            className="group relative overflow-hidden bg-gray-900/80 px-8 py-3 font-semibold uppercase tracking-wider  transition-colors duration-600 ease-in-out 
-  hover:bg-yellow-500/80"
+            className="group relative overflow-hidden bg-darkblue/80 px-8 py-3 font-semibold uppercase tracking-wider  transition-colors duration-600 ease-in-out 
+  hover:bg-gold/80"
           >
             <span
               style={{
@@ -140,8 +134,8 @@ export default function Hero() {
           <button
             onMouseMove={(e) => handleMouseMove(e, setEstimatePos)}
             onMouseLeave={() => handleMouseLeave(setEstimatePos)}
-            className="group relative overflow-hidden bg-transparent px-8 py-3 font-semibold uppercase tracking-wider border border-white transition-colors duration-600 ease-in-out 
-  hover:bg-gray-900/80 hover:border-gray-900/0"
+            className="group relative overflow-hidden bg-transparent px-8 py-3 font-semibold uppercase tracking-wider border border-light transition-colors duration-600 ease-in-out 
+  hover:bg-darkblue/80 hover:border-darkblue/0"
           >
             <span
               style={{
@@ -199,7 +193,7 @@ export default function Hero() {
       <div className="hidden lg:block absolute bottom-1/2 right-6 translate-y-44 z-10 mr-12">
         <MagneticButton
           onClick={handleScrollDown}
-          className="group flex h-30 w-30 items-center justify-center rounded-full border border-white transition-colors duration-300 hover:bg-white hover:text-black"
+          className="group flex h-30 w-30 items-center justify-center rounded-full border border-light transition-colors duration-300 hover:bg-light hover:text-black"
         >
           <svg
             className="h-6 w-6"

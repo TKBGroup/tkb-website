@@ -1,42 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-
-// --- Data for Portfolio Projects ---
-const projects = [
-  // Replace with your actual project data
-  {
-    image: "/images/hero-1.jpg",
-    location: "VAUGHAN, ON",
-    title: "Country Kitchen",
-  },
-  {
-    image: "/images/hero-2.jpg",
-    location: "BURLINGTON, ON",
-    title: "Unique Vanity",
-  },
-  {
-    image: "/images/hero-3.jpg",
-    location: "TORONTO, ON",
-    title: "Modern Open Concept",
-  },
-  {
-    image: "/images/hero-4.jpg",
-    location: "VANCOUVER, BC",
-    title: "Transitional Perfection",
-  },
-  {
-    image: "/images/hero-1.jpg",
-    location: "SCARBOROUGH, ON",
-    title: "Scarborough Loft",
-  },
-];
-
-// --- Reusable Child Component for each Card ---
+import { projects } from "@/components/lib/portfolioProjects";
 function PortfolioCard({ project }: { project: (typeof projects)[0] }) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -47,7 +16,7 @@ function PortfolioCard({ project }: { project: (typeof projects)[0] }) {
   };
 
   const magneticButtonPos = {
-    x: (mousePos.x - 150) * 0.15, // Centering the effect
+    x: (mousePos.x - 150) * 0.15,
     y: (mousePos.y - 150) * 0.15,
   };
 
@@ -65,16 +34,14 @@ function PortfolioCard({ project }: { project: (typeof projects)[0] }) {
         className="object-cover opacity-75"
       />
 
-      {/* Static text content */}
       <div className="absolute top-0 left-0 p-6 text-white z-999">
         <p className="text-xs uppercase tracking-wider">{project.location}</p>
         <h3 className="mt-1 text-2xl font-semibold">{project.title}</h3>
       </div>
 
-      {/* Expanding Circular Overlay */}
       <motion.div
         className="absolute top-0 right-0 h-0 w-0 rounded-full bg-black/50"
-        style={{ x: "50%", y: "-50%" }} // Center the origin at the top-right corner
+        style={{ x: "50%", y: "-50%" }}
         animate={{
           height: isHovered ? "400%" : "0%",
           width: isHovered ? "400%" : "0%",
@@ -82,7 +49,6 @@ function PortfolioCard({ project }: { project: (typeof projects)[0] }) {
         transition={{ duration: 0.7, ease: "easeOut" }}
       />
 
-      {/* Magnetic "View" Button */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         animate={{ scale: isHovered ? 1 : 0 }}
@@ -100,7 +66,6 @@ function PortfolioCard({ project }: { project: (typeof projects)[0] }) {
   );
 }
 
-// --- Main Portfolio Component ---
 export default function Portfolio() {
   const titleVariant: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -115,8 +80,8 @@ export default function Portfolio() {
     Autoplay({
       delay: 4000,
       stopOnMouseEnter: true,
-      stopOnInteraction: false, // resume after hover out
-      stopOnFocusIn: true, // also pause on focus for accessibility
+      stopOnInteraction: false,
+      stopOnFocusIn: true,
     }),
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -134,9 +99,8 @@ export default function Portfolio() {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="bg-[#111827] py-20 sm:py-32 text-white">
+    <section className="bg-darkblue py-20 sm:py-32 text-white">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Animated Title */}
         <motion.div
           className="mb-16"
           initial="hidden"
@@ -146,19 +110,18 @@ export default function Portfolio() {
         >
           <motion.p
             variants={titleVariant}
-            className="text-sm font-semibold uppercase tracking-wider text-yellow-500"
+            className="text-sm font-semibold uppercase tracking-wider text-gold"
           >
             Signature Projects
           </motion.p>
           <motion.h2
             variants={titleVariant}
-            className="mt-2 text-4xl sm:text-5xl font-bold tracking-tight"
+            className="mt-2 text-4xl sm:text-5xl font-chivo font-bold tracking-tight"
           >
             Portfolio
           </motion.h2>
         </motion.div>
 
-        {/* Carousel */}
         <div className="embla" ref={emblaRef}>
           <div className="embla__container">
             {projects.map((project, index) => (
@@ -169,7 +132,6 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Carousel Controls */}
         <div className="mt-12 flex items-center justify-between">
           <button
             onClick={scrollPrev}

@@ -2,43 +2,23 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { animate } from "framer-motion";
-
-const statsData = [
-  {
-    value: 100,
-    label: "RESPONSIBILITY",
-    title: "SUSTAINABLE",
-    description: "and high-quality raw materials used from the USA and Canada",
-    end: "140deg",
-    dur: "3s",
-  },
-  {
-    value: 99,
-    label: "CONTENTEDNESS",
-    title: "SATISFACTION",
-    description: "Customer satisfaction rate for over a decade is our pride",
-    end: "135deg",
-    dur: "4s",
-  },
-  {
-    value: 83,
-    label: "LOYALTY",
-    title: "REPEAT CUSTOMERS",
-    description:
-      "Three-fourths of our revenue is generated from loyal, returning clients",
-    end: "130deg",
-    dur: "5s",
-  },
-];
+import { statsData } from "@/components/lib/stats";
 
 type AnimatedNumberProps = {
   target: number;
   duration?: number;
+  start?: boolean;
 };
-export function AnimatedNumber({ target, duration = 2 }: AnimatedNumberProps) {
+export function AnimatedNumber({
+  target,
+  duration = 2,
+  start = false,
+}: AnimatedNumberProps) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (!start) return;
+
     const controls = animate(1, target, {
       duration,
       ease: "easeOut",
@@ -49,8 +29,8 @@ export function AnimatedNumber({ target, duration = 2 }: AnimatedNumberProps) {
       },
     });
 
-    return () => controls.stop(); // очистка
-  }, [target, duration]);
+    return () => controls.stop();
+  }, [target, duration, start]);
 
   return <span ref={ref}>1%</span>;
 }
@@ -111,10 +91,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-[#111827] py-20 sm:py-24 text-white"
-    >
+    <section ref={sectionRef} className="bg-darkblue py-20 sm:py-24 text-white">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-16 text-center md:grid-cols-3">
           {statsData.map((stat) => (
@@ -127,6 +104,7 @@ export default function Stats() {
                 ></AnimatedCircle>
                 <span className="stats-text text-4xl font-bold absolute z-10">
                   <AnimatedNumber
+                    start={visible}
                     target={stat.value}
                     duration={Number(stat.dur.replace("s", ""))}
                   />
@@ -135,7 +113,9 @@ export default function Stats() {
               <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-gray-400">
                 {stat.label}
               </p>
-              <h3 className="mt-2 text-xl font-bold">{stat.title}</h3>
+              <h3 className="mt-2 text-xl font-chivo font-bold">
+                {stat.title}
+              </h3>
               <p className="mt-4 max-w-xs text-gray-300">{stat.description}</p>
             </div>
           ))}
