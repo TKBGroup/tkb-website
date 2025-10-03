@@ -1,0 +1,36 @@
+@property --progress {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.reveal-circle {
+  --start-angle: 28deg;
+  --end-angle: 300deg;
+  --dur: 2s;
+  --progress: 0;
+
+  width: 200px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 12px solid #caa058;
+  transform: rotate(-120deg);
+
+  --angle: calc(
+    var(--start-angle) +
+      (var(--progress) * (var(--end-angle) - var(--start-angle)))
+  );
+
+  mask-image: conic-gradient(#000 0 var(--angle), transparent 0);
+  -webkit-mask-image: conic-gradient(#000 0 var(--angle), transparent 0);
+}
+
+.revealActive {
+  animation: sweep var(--dur) linear forwards;
+}
+
+@keyframes sweep {
+  to {
+    --progress: 1.85;
+  }
+}

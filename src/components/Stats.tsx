@@ -1,114 +1,140 @@
-// components/Stats.tsx
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { motion, useInView, animate, Variants } from 'framer-motion';
+import React, { useEffect, useState, useRef } from "react";
+import { animate } from "framer-motion";
 
-// --- Data for each stat ---
 const statsData = [
-  { value: 100, label: 'RESPONSIBILITY', title: 'SUSTAINABLE', description: 'and high-quality raw materials used from the USA and Canada' },
-  { value: 97, label: 'CONTENTEDNESS', title: 'SATISFACTION', description: 'Customer satisfaction rate for over a decade is our pride' },
-  { value: 76, label: 'LOYALTY', title: 'REPEAT CUSTOMERS', description: 'Three-fourths of our revenue is generated from loyal, returning clients' },
+  {
+    value: 100,
+    label: "RESPONSIBILITY",
+    title: "SUSTAINABLE",
+    description: "and high-quality raw materials used from the USA and Canada",
+    end: "140deg",
+    dur: "3s",
+  },
+  {
+    value: 99,
+    label: "CONTENTEDNESS",
+    title: "SATISFACTION",
+    description: "Customer satisfaction rate for over a decade is our pride",
+    end: "135deg",
+    dur: "4s",
+  },
+  {
+    value: 83,
+    label: "LOYALTY",
+    title: "REPEAT CUSTOMERS",
+    description:
+      "Three-fourths of our revenue is generated from loyal, returning clients",
+    end: "130deg",
+    dur: "5s",
+  },
 ];
 
-// --- Reusable AnimatedCircle Component ---
-function AnimatedCircle({ value, delay }: { value: number; delay: number }) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  // --- SVG & Arc Math ---
-  const radius = 50;
-  const circumference = 2 * Math.PI * radius;
-  // Define the arc as 3/4 of the circle for a visually pleasing gauge
-  const arcLength = circumference * (3 / 4);
-  const gapLength = circumference - arcLength;
+type AnimatedNumberProps = {
+  target: number;
+  duration?: number;
+};
+export function AnimatedNumber({ target, duration = 2 }: AnimatedNumberProps) {
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (isInView && ref.current) {
-      animate(0, value, {
-        duration: 2,
-        delay: delay,
-        ease: 'easeOut',
-        onUpdate(latest) {
-          if (ref.current) {
-            ref.current.textContent = `${Math.round(latest)}%`;
-          }
-        },
-      });
-    }
-  }, [isInView, value, delay]);
-
-  const circleVariants : Variants = {
-    hidden: { strokeDashoffset: arcLength }, // Start with the arc fully hidden
-    visible: {
-      strokeDashoffset: arcLength * (1 - value / 100), // Animate to the target percentage
-      transition: {
-        duration: 2,
-        ease: 'easeOut',
-        delay: delay,
+    const controls = animate(1, target, {
+      duration,
+      ease: "easeOut",
+      onUpdate(value) {
+        if (ref.current) {
+          ref.current.textContent = `${Math.round(value)}%`;
+        }
       },
-    },
+    });
+
+    return () => controls.stop(); // очистка
+  }, [target, duration]);
+
+  return <span ref={ref}>1%</span>;
+}
+type AnimatedCircleProps = {
+  start?: boolean;
+  end: string;
+  dur?: string;
+  className?: string;
+  children?: React.ReactNode;
+};
+
+const AnimatedCircle: React.FC<AnimatedCircleProps> = ({
+  start = false,
+  end,
+  dur = "2s",
+  className,
+  children,
+}) => {
+  const style: React.CSSProperties & { [key: string]: string } = {
+    "--end-angle": end,
+    "--dur": dur,
   };
 
   return (
-    <div className="relative h-40 w-40">
-      <svg className="h-full w-full" viewBox="0 0 120 120">
-        {/* Gradient Definition */}
-        <defs>
-          <linearGradient id="dark-gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D9A44D" />
-            <stop offset="100%" stopColor="#A77E3D" />
-          </linearGradient>
-        </defs>
-        
-        {/* Background Arc */}
-        <circle
-          cx="60"
-          cy="60"
-          r={radius}
-          stroke="#374151"
-          strokeWidth="10"
-          fill="none"
-          strokeLinecap="round"
-          strokeDasharray={`${arcLength} ${gapLength}`} // Create the 3/4 arc
-          transform="rotate(135 60 60)" // Rotate to position the gap at the bottom
-        />
-        
-        {/* Animated Foreground Arc */}
-        <motion.circle
-          cx="60"
-          cy="60"
-          r={radius}
-          stroke="url(#dark-gold-gradient)"
-          strokeWidth="10"
-          fill="none"
-          strokeLinecap="round"
-          strokeDasharray={`${arcLength} ${gapLength}`} // Ensure this matches the background
-          variants={circleVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transform="rotate(135 60 60)" // Rotate to align perfectly with the background
-        />
-      </svg>
-      
-      {/* Animated Percentage Text */}
-      <p ref={ref} className="absolute inset-0 flex items-center justify-center text-3xl font-bold">
-        0%
-      </p>
+    <div
+      className={`reveal-circle ${start ? "revealActive" : ""} ${
+        className ?? ""
+      }`}
+      style={style}
+    >
+      {children}
     </div>
   );
-}
+};
 
-// --- Main Stats Section Component ---
 export default function Stats() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <section className="bg-[#111827] py-20 sm:py-24 text-white">
+    <section
+      ref={sectionRef}
+      className="bg-[#111827] py-20 sm:py-24 text-white"
+    >
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-16 text-center md:grid-cols-3">
-          {statsData.map((stat, index) => (
+          {statsData.map((stat) => (
             <div key={stat.title} className="flex flex-col items-center">
-              <AnimatedCircle value={stat.value} delay={index * 0.3} />
-              <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-gray-400">{stat.label}</p>
+              <span className="relative flex  items-center justify-center">
+                <AnimatedCircle
+                  start={visible}
+                  end={stat.end}
+                  dur={stat.dur}
+                ></AnimatedCircle>
+                <span className="stats-text text-4xl font-bold absolute z-10">
+                  <AnimatedNumber
+                    target={stat.value}
+                    duration={Number(stat.dur.replace("s", ""))}
+                  />
+                </span>
+              </span>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-gray-400">
+                {stat.label}
+              </p>
               <h3 className="mt-2 text-xl font-bold">{stat.title}</h3>
               <p className="mt-4 max-w-xs text-gray-300">{stat.description}</p>
             </div>

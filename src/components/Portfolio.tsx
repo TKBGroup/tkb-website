@@ -1,23 +1,43 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, Variants } from 'framer-motion';
-import Image from 'next/image';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { motion, Variants } from "framer-motion";
+import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 // --- Data for Portfolio Projects ---
 const projects = [
   // Replace with your actual project data
-  { image: '/images/hero-1.jpg', location: 'VAUGHAN, ON', title: 'Country Kitchen' },
-  { image: '/images/hero-2.jpg', location: 'BURLINGTON, ON', title: 'Unique Vanity' },
-  { image: '/images/hero-3.jpg', location: 'TORONTO, ON', title: 'Modern Open Concept' },
-  { image: '/images/hero-4.jpg', location: 'VANCOUVER, BC', title: 'Transitional Perfection' },
-  { image: '/images/hero-1.jpg', location: 'SCARBOROUGH, ON', title: 'Scarborough Loft' },
+  {
+    image: "/images/hero-1.jpg",
+    location: "VAUGHAN, ON",
+    title: "Country Kitchen",
+  },
+  {
+    image: "/images/hero-2.jpg",
+    location: "BURLINGTON, ON",
+    title: "Unique Vanity",
+  },
+  {
+    image: "/images/hero-3.jpg",
+    location: "TORONTO, ON",
+    title: "Modern Open Concept",
+  },
+  {
+    image: "/images/hero-4.jpg",
+    location: "VANCOUVER, BC",
+    title: "Transitional Perfection",
+  },
+  {
+    image: "/images/hero-1.jpg",
+    location: "SCARBOROUGH, ON",
+    title: "Scarborough Loft",
+  },
 ];
 
 // --- Reusable Child Component for each Card ---
-function PortfolioCard({ project }: { project: typeof projects[0] }) {
+function PortfolioCard({ project }: { project: (typeof projects)[0] }) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -36,12 +56,17 @@ function PortfolioCard({ project }: { project: typeof projects[0] }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
-      className="relative aspect-[4/5] w-full overflow-hidden rounded-lg"
+      className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-black"
     >
-      <Image src={project.image} alt={project.title} fill className="object-cover" />
+      <Image
+        src={project.image}
+        alt={project.title}
+        fill
+        className="object-cover opacity-75"
+      />
 
       {/* Static text content */}
-      <div className="absolute top-0 left-0 p-6 text-white">
+      <div className="absolute top-0 left-0 p-6 text-white z-999">
         <p className="text-xs uppercase tracking-wider">{project.location}</p>
         <h3 className="mt-1 text-2xl font-semibold">{project.title}</h3>
       </div>
@@ -49,11 +74,14 @@ function PortfolioCard({ project }: { project: typeof projects[0] }) {
       {/* Expanding Circular Overlay */}
       <motion.div
         className="absolute top-0 right-0 h-0 w-0 rounded-full bg-black/50"
-        style={{ x: '50%', y: '-50%' }} // Center the origin at the top-right corner
-        animate={{ height: isHovered ? '400%' : '0%', width: isHovered ? '400%' : '0%' }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
+        style={{ x: "50%", y: "-50%" }} // Center the origin at the top-right corner
+        animate={{
+          height: isHovered ? "400%" : "0%",
+          width: isHovered ? "400%" : "0%",
+        }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       />
-      
+
       {/* Magnetic "View" Button */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -63,7 +91,7 @@ function PortfolioCard({ project }: { project: typeof projects[0] }) {
         <motion.button
           className="flex h-32 w-32 items-center justify-center rounded-full border border-white bg-transparent text-white transition-colors duration-300 hover:bg-white hover:text-black"
           style={{ x: magneticButtonPos.x, y: magneticButtonPos.y }}
-          transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+          transition={{ type: "spring", stiffness: 150, damping: 15 }}
         >
           VIEW
         </motion.button>
@@ -72,22 +100,34 @@ function PortfolioCard({ project }: { project: typeof projects[0] }) {
   );
 }
 
-
 // --- Main Portfolio Component ---
 export default function Portfolio() {
-  const titleVariant :Variants = {
+  const titleVariant: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 4000 })]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({
+      delay: 4000,
+      stopOnMouseEnter: true,
+      stopOnInteraction: false, // resume after hover out
+      stopOnFocusIn: true, // also pause on focus for accessibility
+    }),
+  ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     if (!emblaApi) return;
     const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on('select', onSelect);
-    return () => { emblaApi.off('select', onSelect); };
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -96,7 +136,6 @@ export default function Portfolio() {
   return (
     <section className="bg-[#111827] py-20 sm:py-32 text-white">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-        
         {/* Animated Title */}
         <motion.div
           className="mb-16"
@@ -105,10 +144,16 @@ export default function Portfolio() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ staggerChildren: 0.2 }}
         >
-          <motion.p variants={titleVariant} className="text-sm font-semibold uppercase tracking-wider text-yellow-500">
-            Our Projects
+          <motion.p
+            variants={titleVariant}
+            className="text-sm font-semibold uppercase tracking-wider text-yellow-500"
+          >
+            Signature Projects
           </motion.p>
-          <motion.h2 variants={titleVariant} className="mt-2 text-4xl sm:text-5xl font-bold tracking-tight">
+          <motion.h2
+            variants={titleVariant}
+            className="mt-2 text-4xl sm:text-5xl font-bold tracking-tight"
+          >
             Portfolio
           </motion.h2>
         </motion.div>
@@ -126,22 +171,54 @@ export default function Portfolio() {
 
         {/* Carousel Controls */}
         <div className="mt-12 flex items-center justify-between">
-          <button onClick={scrollPrev} className="flex items-center gap-2 text-sm uppercase tracking-wider text-gray-400 hover:text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <button
+            onClick={scrollPrev}
+            className="flex items-center gap-2 text-sm uppercase tracking-wider text-gray-400 hover:text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
             Prev
           </button>
-          
+
           <div className="flex gap-2">
             {projects.map((_, index) => (
               <button key={index} onClick={() => emblaApi?.scrollTo(index)}>
-                <div className={`h-2 w-2 rounded-full transition-colors ${selectedIndex === index ? 'bg-white' : 'bg-gray-600'}`} />
+                <div
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    selectedIndex === index ? "bg-white" : "bg-gray-600"
+                  }`}
+                />
               </button>
             ))}
           </div>
 
-          <button onClick={scrollNext} className="flex items-center gap-2 text-sm uppercase tracking-wider text-gray-400 hover:text-white">
+          <button
+            onClick={scrollNext}
+            className="flex items-center gap-2 text-sm uppercase tracking-wider text-gray-400 hover:text-white"
+          >
             Next
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </button>
         </div>
       </div>
