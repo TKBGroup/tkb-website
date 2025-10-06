@@ -131,15 +131,22 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { motion, useScroll, useTransform, Variants, MotionValue } from "framer-motion";
 import { cardsData } from "@/components/lib/SolutionCards";
+
+type SolutionCardProps = {
+    title: string; 
+    desc: string;
+    img: string;
+    imgAlt: string;
+};
 
 const cardVariants: Variants = {
   hidden: { scale: 0.3, y: 30 },
   visible: { scale: 1, y: 0, transition: { duration: 0.9 } },
 };
 
-const SolutionCard = ({ card, index, progress, range, targetScale }) => {
+const SolutionCard: React.FC<({ card: SolutionCardProps, index: number, progress: MotionValue<number>, range: number[], targetScale: number })> = ({ card, index, progress, range, targetScale }) => {
   const scale = useTransform(progress, range, [targetScale, 0.75]);
   const y = useTransform(progress, range, [0, -50]);
 
