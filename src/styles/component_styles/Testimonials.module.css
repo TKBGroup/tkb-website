@@ -1,0 +1,48 @@
+/* .swiperContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1024px; 
+  margin: 0 auto;
+}
+ 
+.swiperContainer::before,
+.swiperContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 75px; 
+  z-index: 2;
+  pointer-events: none;  
+}
+ 
+.swiperContainer::before {
+  left: 0;
+  background: linear-gradient(to right, #000000 0%, rgba(221, 221, 221, 0) 100%); 
+}
+ 
+.swiperContainer::after {
+  right: 0;
+  background: linear-gradient(to left, #000000 0%, rgba(217, 217, 217, 0) 100%); 
+} */
+ .swiperContainer { 
+  position: relative;
+  width: 100%;
+  max-width: 1024px; 
+  margin: 0 auto;
+  
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 98%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 98%,
+    transparent 100%
+  );
+}
