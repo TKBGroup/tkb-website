@@ -1,13 +1,28 @@
 "use strict";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import {
   residentialLinks,
   commercialLinks,
   aboutLinks,
   ContactUs,
-} from "./lib/navLinks";
+  EmailLinks
+} from "./lib/navLinks"; 
+import ContactForm from "./ContactForm";
+
+
+const Backdrop = ({ onClick }: { onClick?: () => void }) => (
+  <motion.div
+    className="fixed h-screen inset-0 z-1 bg-darkblue/50 top-16 flex flex-col items-center justify-center overflow-y-auto"
+    onClick={onClick}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  />
+);
+
 
 const navVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
@@ -64,20 +79,52 @@ const LinkColumn = ({
   </motion.div>
 );
 
-export default function FullNav() {
+export default function FullNav({ onRequestClose }: { onRequestClose?: () => void }) {
+
+  const [isFormVisible, setForm] = useState(false);
+
+  const handeOpenForm = () => {
+    setForm(true);
+  }
+  const handleAttemptClose = () => { 
+    if (isFormVisible) {
+      return;
+    } 
+    if (onRequestClose) {
+      onRequestClose();
+    }
+      
+  };
+
+  const handeCloseForm = () => {
+    setForm(false);
+  }
   return (
-    <motion.nav
-      className="absolute top-16 left-0 w-full z-50 bg-light h-100"
-      variants={navVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        <LinkColumn name="Residential" links={residentialLinks} />
-        <LinkColumn name="Commercial" links={commercialLinks} />
-        <LinkColumn name="About" links={aboutLinks} />
-        <LinkColumn name="Contact Us" links={ContactUs} />
-      </div>
-    </motion.nav>
+    <>
+      <Backdrop onClick={handleAttemptClose} />
+      <motion.nav
+        className={`absolute top-16 left-0 w-full z-50 bg-light`}
+        variants={navVariants}
+        initial="hidden"
+        animate="visible"
+      > {
+          isFormVisible ?
+            // <div className="bg-white h-screen"></div>
+            <ContactForm isOpen={isFormVisible} onClose={handeCloseForm} />
+            :
+            <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8`}>
+              <LinkColumn name="Residential" links={residentialLinks} />
+              <LinkColumn name="Commercial" links={commercialLinks} />
+              <LinkColumn name="About" links={aboutLinks} />
+              <div className="flex flex-col gap-8">
+                <LinkColumn name="Contact Us" links={ContactUs} />
+                <LinkColumn name="Inquiries" links={EmailLinks} />
+                <motion.button variants={navVariants} onClick={handeOpenForm} className="bg-darkblue text-light hover:bg-transparent hover:text-darkgrey hover:border-3 border-darkgrey p-3 mt-3">Contact Form</motion.button>
+              </div>
+            </div>
+
+        }
+      </motion.nav>
+    </>
   );
 }

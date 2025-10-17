@@ -76,11 +76,12 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ name, desc, index, service }) =
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`bg-light h-auto  p-3 lg:p-6 rounded-lg shadow-lg max-w-md mx-0 my-10 md:my-23 flex flex-col justify-end xl:justify-between min-h-[200px] lg:min-h-[280px]`}
+      className={`bg-light h-auto mx-auto p-3 lg:p-6 rounded-lg shadow-lg max-w-md mx-0 my-10 md:my-23 flex flex-col justify-end xl:justify-between min-h-[200px] lg:min-h-[280px]`}
     >
       <Image
         src={index % 2 == 0 ? quotes[0].src : quotes[1].src}
-        className={`${quotes[0].styles} absolute top-4 sm:top-4 md:top-13 right-4 sm:right-15 md:right-5`}
+        className={`${quotes[0].styles} absolute top-4 sm:top-4 md:top-13 right-4 sm:right-32 md:right-5`}
+        // className={`${quotes[0].styles} absolute top-4 sm:top-4 md:top-13 right-4 sm:right-15 md:right-5`}
         alt="User"
         width={50}
         height={50}
@@ -119,14 +120,14 @@ export default function Testimonials(): JSX.Element {
         </div>
         <motion.div className="hidden md:flex relative h-auto w-18  md:w-32 aspect-square bg-light/60 rounded-full xl:mr-18  justify-center items-center hover:scale-110 transition-all cursor-pointer shadow-lg shadow-dark/10 my-auto">
           <GoArrowRight className="absolute h-auto w-8 " />
-        </motion.div>
-        {/* <span className={` ${isXxsScreen ? styles.swiperContainer : {}} w-full max-w-6xl h-full min-h-[450px] max-h-full`}>  */}
+        </motion.div> 
         <Swiper
           modules={[Autoplay]}
           pagination={{ clickable: false }}
           autoplay={{ delay: 3000 }}
           spaceBetween={isLgScreen ? 35 : 15} 
-          slidesPerView={isLgScreen ? 2.3 : (isMdScreen  ? 1.3 : (isXxsScreen ? 1.2 : 1))}
+          // slidesPerView={isLgScreen ? 2.3 : (isMdScreen  ? 1.3 : (isXxsScreen ? 1.2 : 1))}
+          slidesPerView={isLgScreen ? 2.3 : (isMdScreen  ? 1.3 : 1)}
           className={` ${isXxsScreen ? styles.swiperContainer : {}} w-full max-w-6xl h-full min-h-[450px] max-h-full`}
         >
           {cards.map((card, index) => (
@@ -134,8 +135,7 @@ export default function Testimonials(): JSX.Element {
               <ReviewCard name={card.name} desc={card.desc} index={index} service={card.service}/>
             </SwiperSlide>
           ))}
-        </Swiper>
-        {/* </span> */}
+        </Swiper> 
       </div>
     </div>
   );

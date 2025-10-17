@@ -11,7 +11,9 @@ import { IconType } from "react-icons";
 export default function Header() {
   const [isFullNavVisible, setFullNavVisible] = useState(false);
 
-  
+  const closeNav = () => {
+    setFullNavVisible(false);
+  }
 
   const icons: Record<SocialName, IconType> = {
     Facebook: FaFacebookF,
@@ -51,7 +53,7 @@ export default function Header() {
         </div>
       </div>
 
-      <AnimatePresence>{isFullNavVisible && <FullNav />}</AnimatePresence>
+      <AnimatePresence>{isFullNavVisible && <FullNav onRequestClose={closeNav} />}</AnimatePresence>
     </header>
   );
 }

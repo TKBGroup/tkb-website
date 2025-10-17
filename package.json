@@ -11,6 +11,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.18",
+    "lucide-react": "^0.546.0",
     "motion": "^12.23.22",
     "next": "15.5.3",
     "react": "19.1.0",
