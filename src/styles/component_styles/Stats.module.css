@@ -4,6 +4,21 @@
   initial-value: 0;
 }
 
+/* .inner-shadow-section {
+  background: #F4F9FF;
+
+  box-shadow: -15px -12px 41px 0px #D9D9D91A inset;
+
+  box-shadow: -58px -47px 75px 0px #D9D9D917 inset;
+
+  box-shadow: -131px -105px 101px 0px #D9D9D90D inset;
+
+  box-shadow: -232px -187px 119px 0px #D9D9D903 inset;
+
+  box-shadow: -363px -293px 131px 0px #D9D9D900 inset;
+
+} */
+
 .reveal-circle {
   --start-angle: 28deg;
   --end-angle: 300deg;
@@ -16,10 +31,7 @@
   border: 12px solid #caa058;
   transform: rotate(-120deg);
 
-  --angle: calc(
-    var(--start-angle) +
-      (var(--progress) * (var(--end-angle) - var(--start-angle)))
-  );
+  --angle: calc(var(--start-angle) + (var(--progress) * (var(--end-angle) - var(--start-angle))));
 
   mask-image: conic-gradient(#000 0 var(--angle), transparent 0);
   -webkit-mask-image: conic-gradient(#000 0 var(--angle), transparent 0);

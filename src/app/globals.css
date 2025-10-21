@@ -4,6 +4,7 @@
 
 @import "../styles/component_styles/Stats.module.css";
 @import "../styles/component_styles/Portfolio.module.css";
+@import "../styles/component_styles/Slides.module.css";
 
 @import "../styles/theme.css";
 @import "../styles/utilities.css";
@@ -14,4 +15,79 @@
 
 body {
   overflow-x: hidden;
+}
+
+/*
+ * animations.css
+ * Ensure this file is imported into your main application's stylesheet.
+ */
+
+/*
+ * Note: The animation property is set dynamically via React inline style
+ * (e.g., animation: ${currentEffect} ease-in-out both), so only the
+ * @keyframes are needed here.
+ */
+
+/* --- Blink Effect (Default) --- */
+@keyframes blink {
+  0%,
+  100% {
+    /* Uses CSS variables passed from the React component's inline style */
+    filter: blur(var(--blur)) contrast(var(--contrast));
+    opacity: 0;
+    visibility: hidden;
+  }
+  50% {
+    filter: blur(0) contrast(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* --- Horizontal Scroll Effect --- */
+@keyframes horizontal-scroll {
+  0% {
+    transform: translate3d(100%, 0%, 0);
+  }
+  50% {
+    transform: none;
+  }
+  100% {
+    transform: translate3d(-100%, 0%, 0);
+  }
+}
+
+/* --- Backwards Scroll Effect --- */
+@keyframes backwards-scroll {
+  0% {
+    transform: translate3d(0%, -100%, 0);
+  }
+  50% {
+    transform: none;
+  }
+  100% {
+    transform: translate3d(0%, 100%, 0);
+  }
+}
+
+/* --- Zoom Scroll Effect --- */
+@keyframes zoom-scroll {
+  0% {
+    filter: blur(5rem);
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  50% {
+    filter: blur(0);
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    filter: blur(3rem);
+    transform: scale(1.5);
+    opacity: 0;
+    visibility: hidden;
+  }
 }

@@ -15,15 +15,13 @@ import ContactForm from "./ContactForm";
 
 const Backdrop = ({ onClick }: { onClick?: () => void }) => (
   <motion.div
-    className="fixed h-screen inset-0 z-1 bg-darkblue/50 top-16 flex flex-col items-center justify-center overflow-y-auto"
+    className="fixed h-screen inset-0 z-1 bg-darkblue/50 top-16 flex flex-col items-center justify-center overflow-y-auto "
     onClick={onClick}
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
   />
 );
-
-
 const navVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
   visible: {
@@ -35,8 +33,33 @@ const navVariants: Variants = {
       staggerChildren: 0.1,
       delayChildren: 0.3,
     },
+  }, 
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut", 
+      staggerChildren: 0.1,
+      staggerDirection: -1,
+    },
   },
 };
+
+
+// const navVariants: Variants = {
+//   hidden: { opacity: 0, y: -20 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       duration: 0.5,
+//       ease: "easeInOut",
+//       staggerChildren: 0.1,
+//       delayChildren: 0.3,
+//     },
+//   },
+// };
 
 const columnVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -84,29 +107,34 @@ export default function FullNav({ onRequestClose }: { onRequestClose?: () => voi
   const [isFormVisible, setForm] = useState(false);
 
   const handeOpenForm = () => {
+    console.log("Hnadle Open Form");
     setForm(true);
   }
   const handleAttemptClose = () => { 
     if (isFormVisible) {
+      console.log("isFormVisible return");
       return;
     } 
     if (onRequestClose) {
+      console.log("OnrequestingClose");
       onRequestClose();
     }
       
   };
 
   const handeCloseForm = () => {
+    console.log("Hnadle Close Form");
     setForm(false);
   }
   return (
     <>
       <Backdrop onClick={handleAttemptClose} />
       <motion.nav
-        className={`absolute top-16 left-0 w-full z-50 bg-light`}
+        className={`absolute top-16 left-0 w-full z-50 bg-light `}
         variants={navVariants}
         initial="hidden"
         animate="visible"
+        exit="exit"
       > {
           isFormVisible ?
             // <div className="bg-white h-screen"></div>
@@ -119,7 +147,7 @@ export default function FullNav({ onRequestClose }: { onRequestClose?: () => voi
               <div className="flex flex-col gap-8">
                 <LinkColumn name="Contact Us" links={ContactUs} />
                 <LinkColumn name="Inquiries" links={EmailLinks} />
-                <motion.button variants={navVariants} onClick={handeOpenForm} className="bg-darkblue text-light hover:bg-transparent hover:text-darkgrey hover:border-3 border-darkgrey p-3 mt-3">Contact Form</motion.button>
+                <motion.button variants={navVariants} onClick={handeOpenForm} className="hover:bg-darkblue hover:text-light text-center bg-transparent text-darkgrey border-2 border-darkgrey p-3 mt-3">Contact Form</motion.button>
               </div>
             </div>
 

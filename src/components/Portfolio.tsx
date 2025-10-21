@@ -156,9 +156,8 @@ export default function Portfolio() {
             {projects.map((_, index) => (
               <button key={index} onClick={() => emblaApi?.scrollTo(index)}>
                 <div
-                  className={`h-2 w-2 rounded-full transition-colors ${
-                    selectedIndex === index ? "bg-white" : "bg-gray-600"
-                  }`}
+                  className={`h-2 w-2 rounded-full transition-colors ${selectedIndex === index ? "bg-white" : "bg-gray-600"
+                    }`}
                 />
               </button>
             ))}

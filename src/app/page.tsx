@@ -8,10 +8,12 @@ import Stats from "@/components/Stats";
 import About from "@/components/About";
 import OurSolutions from "@/components/OurSolutions";
 import Testimonials from "@/components/Testimonials";
+import FooterCTA from "@/components/FooterCTA";
+import Slides from "@/components/Slides";
 
 export default function HomePage() {
   return (
-    <main className="w-full py-48 pt-14">
+    <main className="w-full">
       <Hero />
       <section
         id="first-section"
@@ -41,12 +43,18 @@ export default function HomePage() {
       </FadeInOnScroll>
 
       <FadeInOnScroll>
-        <OurSolutions />
+        <Testimonials />
       </FadeInOnScroll>
 
       <FadeInOnScroll>
-        <Testimonials />
+        <OurSolutions />
       </FadeInOnScroll>
+
+
+      <FadeInOnScroll>
+        <FooterCTA />
+      </FadeInOnScroll>
+ 
     </main>
   );
 }

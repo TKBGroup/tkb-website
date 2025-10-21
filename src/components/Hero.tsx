@@ -39,8 +39,7 @@ export default function Hero() {
   const [index, setIndex] = useState(0);
 
   const [contactPos, setContactPos] = useState({ x: 0, y: 0 });
-  const [estimatePos, setEstimatePos] = useState({ x: 0, y: 0 });
-  const [scrollPos, setScrollPos] = useState({ x: 0, y: 0 });
+  const [estimatePos, setEstimatePos] = useState({ x: 0, y: 0 }); 
 
   const handleMouseMove = (
     e: React.MouseEvent<HTMLButtonElement>,

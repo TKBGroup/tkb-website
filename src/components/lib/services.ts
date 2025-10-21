@@ -2,7 +2,7 @@ export const services = [
   {
     icon: "/icons/planning.png",
     subheading: "MILLWORK PROJECTS MANAGEMENT",
-    heading: "Project Delivery",
+    heading: "Project Coordination",
     description:
       "Comprehensive project planning and management for every complexity of millwork and cabinetry projects.",
   },

@@ -91,7 +91,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-darkblue py-20 sm:py-24 text-white">
+    <section ref={sectionRef} className="inner-shadow-section bg-darkblue py-20 sm:py-24 text-white">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-16 text-center md:grid-cols-3">
           {statsData.map((stat) => (

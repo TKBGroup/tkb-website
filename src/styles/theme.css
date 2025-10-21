@@ -22,7 +22,9 @@
   /* --color-darkblue: #0C1A31; */
   --color-darkblue: #111827;
   --color-gray-4: #CCCFD9; /* zamenit lightgrey */
-  --color-gray-3: #F6F8FA; /* zamenit grey */
+  /* --color-gray-3: #F6F8FA;  */
+  --color-gray-3: #CDCDCE; /* zamenit grey */
+  --color-gray-5: #999999; 
   --color-darkgrey: #3A3A3E;
   --color-light: #FCFCFD;
   --color-gold: #CAA058;
