@@ -1,15 +1,15 @@
 import FadeInOnScroll from "@/components/FadeInOnScroll";
-import Hero from "@/components/Hero";
-import TrustedBy from "@/components/TrustedBy";
-import Solutions from "@/components/Solutions";
-import Portfolio from "@/components/Portfolio";
-import Numbers from "@/components/Numbers";
-import Stats from "@/components/Stats";
-import About from "@/components/About";
-import OurSolutions from "@/components/OurSolutions";
-import Testimonials from "@/components/Testimonials";
-import FooterCTA from "@/components/FooterCTA";
-import Slides from "@/components/Slides";
+import Hero from "@/components/UI/Hero";
+import TrustedBy from "@/components/UI/TrustedBy";
+import Solutions from "@/components/UI/Solutions";
+import Portfolio from "@/components/UI/Portfolio";
+import Numbers from "@/components/UI/Numbers";
+import Stats from "@/components/UI/Stats";
+import About from "@/components/UI/About";
+import OurSolutions from "@/components/UI/OurSolutions";
+import Testimonials from "@/components/UI/Testimonials";
+import FooterCTA from "@/components/UI/FooterCTA";
+import Slides from "@/components/UI/Slides";
 
 export default function HomePage() {
   return (
@@ -54,7 +54,10 @@ export default function HomePage() {
       <FadeInOnScroll>
         <FooterCTA />
       </FadeInOnScroll>
- 
+{/*  
+      <FadeInOnScroll>
+        <Slides />
+      </FadeInOnScroll> */}
     </main>
   );
 }

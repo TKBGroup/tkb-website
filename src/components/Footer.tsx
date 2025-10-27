@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { footerLogos } from "@/components/lib/logos";
-import { socialLinks, SocialName } from "./lib/navLinks";
+import { footerLogos } from "@/lib/logos";
+import { socialLinks, SocialName } from "../lib/navLinks";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -81,12 +81,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-gray-4 hover:text-light transition">
+                <Link href="/about" className="text-gray-4 hover:text-light transition">
                   About TKB
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-gray-4 hover:text-light transition">
+                <Link href="/contact" className="text-gray-4 hover:text-light transition">
                   Contact Us
                 </Link>
               </li>
@@ -96,17 +96,17 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-gray-4 hover:text-light transition">
+                <Link href="/careers" className="text-gray-4 hover:text-light transition">
                   Careers & Opportunities
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-gray-4 hover:text-light transition">
+                <Link href="/testimonials" className="text-gray-4 hover:text-light transition">
                   Testimonials & Recognition
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-gray-4 hover:text-light transition">
+                <Link href="/faq" className="text-gray-4 hover:text-light transition">
                   Frequently Asked Questions
                 </Link>
               </li>

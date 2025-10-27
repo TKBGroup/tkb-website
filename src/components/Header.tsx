@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
 import FullNav from "./FullNav";
-import { socialLinks, SocialName } from "./lib/navLinks";
+import { socialLinks, SocialName } from "../lib/navLinks";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -28,7 +28,7 @@ export default function Header() {
       className={`fixed top-0 left-0 w-full ${
         // isFullNavVisible ? "bg-white" : "bg-transparent"
         isFullNavVisible ? "bg-light" : "bg-light/50"
-      } backdrop-blur-sm shadow-sm z-50 transition-all duration-300"
+      } backdrop-blur-sm shadow-sm z-999 transition-all duration-300"
     `}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">

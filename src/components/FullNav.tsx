@@ -9,7 +9,7 @@ import {
   aboutLinks,
   ContactUs,
   EmailLinks
-} from "./lib/navLinks"; 
+} from "../lib/navLinks"; 
 import ContactForm from "./ContactForm";
 
 
