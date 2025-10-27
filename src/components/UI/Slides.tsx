@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 // --- Helper function to convert Tailwind 'rem' value to pixels (standard 16px base)
 const remToPx = (rem: number): number => rem * 16;
 
-function Slides() {
+export default function Slides() {
   // Array defining the number of cards
   const emptyArray = Array.from({ length: 10 }); 
 
@@ -91,5 +91,4 @@ function Slides() {
       </motion.div>
     </>
   );
-}
-export default Slides;
+} 
