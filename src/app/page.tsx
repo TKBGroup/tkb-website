@@ -9,7 +9,7 @@ import About from "@/components/UI/About";
 import OurSolutions from "@/components/UI/OurSolutions";
 import Testimonials from "@/components/UI/Testimonials";
 import FooterCTA from "@/components/UI/FooterCTA";
-import Slides from "@/components/UI/Slides";
+// import Slides from "@/components/UI/Slides";
 
 export default function HomePage() {
   return (
