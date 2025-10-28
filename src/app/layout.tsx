@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { montserrat } from "../../public/fonts/fonts";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/features/navigation/Header";
+import Footer from "@/components/features/footer/Footer";
 
 export const metadata: Metadata = {
   title: "TKB Group",
