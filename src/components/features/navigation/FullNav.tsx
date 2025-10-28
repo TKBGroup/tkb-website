@@ -9,8 +9,8 @@ import {
   aboutLinks,
   ContactUs,
   EmailLinks
-} from "../lib/navLinks";
-import ContactForm from "./ContactForm";
+} from "../../../lib/navLinks";
+import ContactForm from "../contact/ContactForm";
 import { X } from "lucide-react";
 
 
@@ -98,12 +98,14 @@ const contentVariants = {
 const LinkColumn = ({
   name,
   links,
+  mainLink,
 }: {
   name: string;
   links: { name: string; href: string }[];
+  mainLink?: string;
 }) => (
   <motion.div className="flex flex-col space-y-2" variants={columnVariants}>
-    <Link href={links[0].href} className="text-lg font-semibold">
+    <Link href={mainLink ? mainLink : ""} className="text-lg font-semibold">
       {name}
     </Link>
     <ul className="flex flex-col space-y-3">
@@ -147,14 +149,14 @@ export default function FullNav({ onRequestClose }: { onRequestClose?: () => voi
     if (onRequestClose) {
       onRequestClose();
     }
-  };
+  }; 
 
   return (
     <>
 
       <Backdrop onClick={handleAttemptClose} />
       <motion.nav
-        className="absolute top-16 left-0 right-0 z-50 bg-light h-[calc(100vh-4rem)] xs:h-[calc(100vh-14rem)] overflow-y-auto -webkit-overflow-scrolling-touch"
+        className={`absolute top-16 left-0 right-0 z-50 bg-light ${isFormVisible ? 'xs:h-[calc(100vh-4rem)]' : 'xs:h-[calc(100vh-14rem)]'} h-[calc(100vh)] overflow-y-auto -webkit-overflow-scrolling-touch`}
         // variants={navVariants}   
         ref={navRef}    
         initial={{ y: "-100%" }}
@@ -178,12 +180,12 @@ export default function FullNav({ onRequestClose }: { onRequestClose?: () => voi
               initial="hidden"
               animate="visible"
               exit="hidden"
-            >                  <LinkColumn name="Residential" links={residentialLinks} />
-              <LinkColumn name="Commercial" links={commercialLinks} />
-              <LinkColumn name="About" links={aboutLinks} />
+            >                  <LinkColumn name="Residential" links={residentialLinks.slice(1)} mainLink={residentialLinks[0].href} />
+              <LinkColumn name="Commercial" links={commercialLinks.slice(1)} mainLink={commercialLinks[0].href} />
+              <LinkColumn name="About" links={aboutLinks.slice(1)} mainLink={aboutLinks[0].href} />
               <div className="flex flex-col gap-8">
-                <LinkColumn name="Contact Us" links={ContactUs} />
-                <LinkColumn name="Inquiries" links={EmailLinks} />
+                <LinkColumn name="Contact Us" links={ContactUs.slice(1)}  mainLink={ContactUs[0].href}/>
+                <LinkColumn name="Inquiries" links={EmailLinks}  mainLink={ContactUs[0].href} />
                 <motion.button onClick={handeOpenForm} className="hover:bg-darkblue hover:text-light text-center bg-transparent text-darkgrey border-2 border-darkgrey p-3 mt-3">
                   Contact Form
                 </motion.button>

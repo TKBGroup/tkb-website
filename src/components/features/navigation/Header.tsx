@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
 import FullNav from "./FullNav";
-import { socialLinks, SocialName } from "../lib/navLinks";
+import { socialLinks, SocialName } from "../../../lib/navLinks";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { IconType } from "react-icons";
 

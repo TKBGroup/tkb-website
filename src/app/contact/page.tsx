@@ -2,14 +2,14 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import FadeInOnScroll from "@/components/FadeInOnScroll";
-import LocationRow from "@/components/LocationRow";
+import FadeInOnScroll from "@/components/UI/FadeInOnScroll";
+import LocationRow from "@/components/features/contact/LocationRow";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { images } from "@/lib/heroImages";
-import ExpandableContactForm from "@/components/ExpandableContactForm";
-import WhoAreWe from "@/components/UI/WhoAreWe";
-import SeekingHelp from "@/components/UI/SeekingHelp";
+import ExpandableContactForm from "@/components/features/contact/ExpandableContactForm";
+import WhoAreWe from "@/components/features/about/WhoAreWe";
+import SeekingHelp from "@/components/features/CTA/SeekingHelp";
 
 
 

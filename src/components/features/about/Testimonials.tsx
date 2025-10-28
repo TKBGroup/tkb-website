@@ -6,11 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { motion, Variants } from "framer-motion";
 import { GoArrowRight } from "react-icons/go";
-import { quotes } from "../../lib/quotes";
-import { useWindowSize } from "../../lib/hooks/useWindowSize";
+import { quotes } from "../../../lib/quotes";
+import { useWindowSize } from "../../../lib/hooks/useWindowSize";
 import "swiper/css";
 import "swiper/css/pagination";
-import styles from "../../styles/component_styles/Testimonials.module.css";
+import styles from "../../../styles/component_styles/Testimonials.module.css";
 
 const cards = [
   {

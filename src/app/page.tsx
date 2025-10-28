@@ -1,14 +1,14 @@
-import FadeInOnScroll from "@/components/FadeInOnScroll";
-import Hero from "@/components/UI/Hero";
-import TrustedBy from "@/components/UI/TrustedBy";
-import Solutions from "@/components/UI/Solutions";
-import Portfolio from "@/components/UI/Portfolio";
-import Numbers from "@/components/UI/Numbers";
-import Stats from "@/components/UI/Stats";
-import About from "@/components/UI/About";
-import OurSolutions from "@/components/UI/OurSolutions";
-import Testimonials from "@/components/UI/Testimonials";
-import FooterCTA from "@/components/UI/FooterCTA";
+import FadeInOnScroll from "@/components/UI/FadeInOnScroll";
+import Hero from "@/components/features/hero/Hero";
+import TrustedBy from "@/components/features/about/TrustedBy";
+import Solutions from "@/components/features/about/Solutions";
+import Portfolio from "@/components/features/about/Portfolio";
+import Numbers from "@/components/features/about/Numbers";
+import Stats from "@/components/features/about/Stats";
+import About from "@/components/features/about/About";
+import OurSolutions from "@/components/features/about/OurSolutions";
+import Testimonials from "@/components/features/about/Testimonials";
+import FooterCTA from "@/components/features/CTA/FooterCTA";
 
 export default function HomePage() {
   return (

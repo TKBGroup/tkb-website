@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import ThankYouMessage from './UI/ThankYou';
+import ThankYouMessage from './ThankYou';
 import { X, CheckCircle, Paperclip, ChevronDown, ArrowRight } from 'lucide-react';
 
 type InputTypes = {

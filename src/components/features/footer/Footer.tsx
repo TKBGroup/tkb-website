@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { footerLogos } from "@/lib/logos";
-import { socialLinks, SocialName } from "../lib/navLinks";
+import { socialLinks, SocialName } from "../../../lib/navLinks";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { IconType } from "react-icons";
 
