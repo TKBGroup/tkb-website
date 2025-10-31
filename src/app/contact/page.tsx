@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { images } from "@/lib/heroImages";
 import ExpandableContactForm from "@/components/features/contact/ExpandableContactForm";
-import WhoAreWe from "@/components/features/about/WhoAreWe";
+import InfoBlock1 from "@/components/features/about/InfoBlock1";
 import SeekingHelp from "@/components/features/CTA/SeekingHelp";
 
 
@@ -139,7 +139,7 @@ export default function ContactPage() {
         </FadeInOnScroll>
 
         <FadeInOnScroll>
-          <WhoAreWe />
+          <InfoBlock1 />
         </FadeInOnScroll>
 
         <FadeInOnScroll>

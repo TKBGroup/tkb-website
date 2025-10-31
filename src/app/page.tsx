@@ -7,8 +7,8 @@ import Numbers from "@/components/features/about/Numbers";
 import Stats from "@/components/features/about/Stats";
 import About from "@/components/features/about/About";
 import OurSolutions from "@/components/features/about/OurSolutions";
-import Testimonials from "@/components/features/about/Testimonials";
-import FooterCTA from "@/components/features/CTA/FooterCTA";
+import Testimonials from "@/components/features/about/Testimonials"; 
+import CallToActionBlock from "@/components/UI/CallToActionBlock";
 
 export default function HomePage() {
   return (
@@ -51,12 +51,8 @@ export default function HomePage() {
 
 
       <FadeInOnScroll>
-        <FooterCTA />
-      </FadeInOnScroll>
-{/*  
-      <FadeInOnScroll>
-        <Slides />
-      </FadeInOnScroll> */}
+        <CallToActionBlock />
+      </FadeInOnScroll> 
     </main>
   );
 }

@@ -51,7 +51,7 @@ const textVariants: Variants = {
 const HeroImage: React.FC<{ src: string; alt: string; title: string; path: string }> = ({ src, alt, title, path }) => {
     return (
         <motion.div 
-            className="relative w-full h-86 lg:h-[32rem] overflow-hidden shadow-lg text-light"
+            className="relative w-full h-86 lg:h-[32rem] overflow-hidden shadow-lg text-light p-8  md:p-12"
             variants={heroVariants}
             initial="hidden"
             animate="visible"
@@ -59,13 +59,13 @@ const HeroImage: React.FC<{ src: string; alt: string; title: string; path: strin
             <Image
                 src={src}
                 alt={alt}
-                fill
                 className="object-cover z-0"
                 priority
+                fill
             />
             <div className="absolute inset-0 bg-black/50 z-10" />
 cc
-            <div className="relative z-20 h-full p-6 sm:p-8 md:p-12 flex flex-col justify-end">
+            <div className="relative z-20 h-full   flex flex-col justify-end">
                 <div className="max-w-[1240px] w-full mx-auto flex justify-between items-end">
                     <motion.h1 
                         className="text-sm xxs:text-lg xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light"

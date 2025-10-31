@@ -6,6 +6,8 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { projects } from "@/lib/portfolioProjects";
+
+
 function PortfolioCard({ project }: { project: (typeof projects)[0] }) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });

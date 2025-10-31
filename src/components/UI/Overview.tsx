@@ -58,7 +58,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import MagneticButton from "./MagneticButton";  
+import MagneticButton from "./MagneticButton";
 
 const overviewVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
@@ -66,30 +66,31 @@ const overviewVariants: Variants = {
 };
 
 const Overview: React.FC<{ title: string; description: string }> = ({ title, description }) => {
-     
+
     const handleScrollDown = () => {
         document
-            .getElementById("second-section")  
+            .getElementById("second-section")
             ?.scrollIntoView({ behavior: "smooth" });
     };
 
     return (
-        <motion.section 
-            className="w-full max-w-[1240px] mx-auto py-24 px-4 sm:px-6 lg:px-8 "
-            variants={overviewVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-        > 
-            <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
- 
-                <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black  italic text-darkblue leading-tight mb-6 md:mb-12">
-                        {title}
-                    </h2>
-                    
-                    <MagneticButton 
-                        className="
+        <div className="bg-gray-3/30">
+            <motion.section
+                className="w-full max-w-[1240px] mx-auto py-24 px-4 sm:px-6 lg:px-8 "
+                variants={overviewVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+            >
+                <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
+
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black  italic text-darkblue leading-tight mb-6 md:mb-12">
+                            {title}
+                        </h2>
+
+                        <MagneticButton
+                            className="
                             hidden lg:flex  
                             group h-40 w-40 
                             items-center justify-center 
@@ -99,33 +100,33 @@ const Overview: React.FC<{ title: string; description: string }> = ({ title, des
                             border-darkblue 
                             transition-colors duration-300 
                             hover:bg-darkblue hover:text-white"
-                        onClick={handleScrollDown}
-                    >
-                         <svg
-                    className="h-10 w-10"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
-                    />
-                </svg>
-                    </MagneticButton>
-                </div>
- 
-                <div className="lg:block relative md:px-2 lg:mt-0">
-                    <img 
-                        src="/images/about/client.png" 
-                        alt="A modern kitchen interior" 
-                        className="w-full shadow-lg"
-                    />
-                     
-                    <div className="
+                            onClick={handleScrollDown}
+                        >
+                            <svg
+                                className="h-10 w-10"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth="1.5"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+                                />
+                            </svg>
+                        </MagneticButton>
+                    </div>
+
+                    <div className="lg:block relative md:px-2 lg:mt-0">
+                        <img
+                            src="/images/about/client.png"
+                            alt="A modern kitchen interior"
+                            className="w-full shadow-lg"
+                        />
+
+                        <div className="
                         relative lg:absolute 
                         lg:bottom-0 lg:left-14
                         lg:-translate-x-1/4 lg:translate-y-1/4 
@@ -136,15 +137,17 @@ const Overview: React.FC<{ title: string; description: string }> = ({ title, des
                          
                         max-w-xl
                         mt-[-80px] lg:mt-0 mx-auto lg:mx-0"
-                    >
-                        <p className="text-lg md:text-xl">
-                            {description}
-                        </p>
+                        >
+                            <p className="text-lg md:text-xl">
+                                {description}
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-        </motion.section>
+                </div>
+            </motion.section>
+
+        </div>
     );
 };
 

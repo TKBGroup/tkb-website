@@ -63,7 +63,7 @@ export default function Numbers() {
               {/* Animated Number */}
               <motion.h2
                 variants={numberVariant}
-                className="text-6xl sm:text-8xl font-black uppercase"
+                className="text-6xl sm:text-8xl font-black uppercase max-w-min"
                 style={{
                   color: "transparent",
                   WebkitTextStroke: "1px var(--color-gold)",
@@ -76,7 +76,7 @@ export default function Numbers() {
               {/* Animated Caption */}
               <motion.h3
                 variants={captionVariant}
-                className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl font-chivo font-bold text-gray-900 mt-12 ml-12"
+                className=" inset-0 flex items-center justify-center text-3xl sm:text-5xl font-chivo font-bold text-gray-900 max-w-max"
               >
                 {stat.caption}
               </motion.h3>

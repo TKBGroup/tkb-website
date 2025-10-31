@@ -33,4 +33,4 @@ const MagneticButton = ({ children, className, ...props }: any) => {
     );
 };
 
-export default MagneticButton;
+export default MagneticButton; 

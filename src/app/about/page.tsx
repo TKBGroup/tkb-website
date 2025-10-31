@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <main className="w-full">
       <FadeInOnScroll>
-        <HeroImage src="/images/hero-1.jpg" alt="" title="About TKB Group" path="Home / About" />
+        <HeroImage src="/images/about/hero-about.png" alt="" title="About TKB Group" path="Home / About" />
       </FadeInOnScroll>
       <FadeInOnScroll>
         <Overview title="Where Vision and Craftsmanship Meet." description="For over 35 years, TKB Group has been the all-in-one partner for Canadian most discerning homeowners and businesses, turning ambitious ideas into tangible, masterfully-built realities." />

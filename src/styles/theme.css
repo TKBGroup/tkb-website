@@ -1,7 +1,14 @@
 @theme {
 /* Custom Breakpoints */
+/* 2xl	96rem (1536px)  */ 
+/* xl	80rem (1280px)	  */
+/* lg	64rem (1024px)	  */
+  --breakpoint-middle: 900px;
+/* md	48rem (768px)	 */
+ /* sm	40rem (640px) */
   --breakpoint-xs: 480px;
   --breakpoint-xxs: 360px;
+
 
 /* Color Palette */
   --color-primary-500: #877eff;
